@@ -13,10 +13,20 @@ With the following command line : ``pip install -r requirements.txt``
 ### 1. Create [Twilio Account](https://www.twilio.com)
 ### 2. Copy and past your **account sid**, **auth_token**, **twilio_number** into ``keys.py``
 
+## Web Services SOAP:
+### 1. Web Services development in [OpenESB](https://open-esb.net/) using java
+### 2. Web Services deployment using ``Glassfish Server``
+
 ## System Design:
-This is a RESTful application, using 3 REST APIs:
-- ``CivilState``: Returns Whether the entered Informations are True or False
+SOAP Web Services:
+- ``EtatCivil``: Returns Whether the entered Informations are True or False
 - ``CriminalRecord``: Returns the criminal record of the person (Good/Bad)
 - ``SafetyState``: Returns the Safety state of the person (Wanted/Unwanted)
 
-> ``server.py`` Flask application, GET the form information and calls the 3 previous APIs to handle the passport request, and send SMS to the person using Twilio API.
+> ``main.py`` Flask application, GET the form information and calls the 3 previous APIs to handle the passport request, and send SMS to the person using Twilio API.
+
+## How to run it:
+### 1. Build & Deploy ``EtatCivil`` ``CriminalRecord`` ``SafetyState`` SOAP Web Services
+> Using Glassfish, or any other deployment server
+### 2. Get Their WSDL (if different) and replace it in the ``main.py`` to call and handle Web services using ``zeep`` library
+### 3. Start ``main.py`` (Flask App)
